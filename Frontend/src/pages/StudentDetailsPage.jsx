@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { FaArrowLeft, FaTrash, FaEdit } from "react-icons/fa";
+import { Host } from "../DEV";
 
 function StudentDetailsPage() {
   const { id } = useParams();
@@ -38,7 +39,7 @@ function StudentDetailsPage() {
 
   // Fetch student
   useEffect(() => {
-    fetch(`http://localhost:5000/students/${id}`)
+    fetch(`${Host}/students/${id}`)
       .then((res) => res.json())
       .then((data) => {
         setStudent(data);
@@ -69,7 +70,7 @@ function StudentDetailsPage() {
 
   // Save updates to backend
   const saveUpdates = async (updated) => {
-    const res = await fetch(`http://localhost:5000/students/${student.id}`, {
+    const res = await fetch(`${Host}/students/${student.id}`, {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(updated),
@@ -108,7 +109,7 @@ function StudentDetailsPage() {
   // Remove Student
   const handleRemove = async () => {
     if (window.confirm(`Are you sure you want to remove ${student.name}?`)) {
-      await fetch(`http://localhost:5000/students/${student.id}`, {
+      await fetch(`${Host}/students/${student.id}`, {
         method: "DELETE",
       });
       navigate("/students");

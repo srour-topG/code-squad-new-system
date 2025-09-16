@@ -4,6 +4,7 @@ import moment from "moment";
 import "react-big-calendar/lib/css/react-big-calendar.css";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import { Host } from "../DEV";
 
 const localizer = momentLocalizer(moment);
 
@@ -33,7 +34,7 @@ function CalendarPage() {
   }, []);
 
   const fetchEvents = async () => {
-    const res = await axios.get("http://localhost:5000/events");
+    const res = await axios.get(`${Host}/events`);
     // Convert ISO dates back into JS Date
     setEvents(
       res.data.map((ev) => ({
@@ -98,13 +99,13 @@ function CalendarPage() {
       // ✅ Update single event
       const updated = { ...newEvents[0], id: editingEvent.id };
       await axios.put(
-        `http://localhost:5000/events/${editingEvent.id}`,
+        `${Host}/events/${editingEvent.id}`,
         updated
       );
     } else {
       // ✅ Save all new events to backend
       for (let ev of newEvents) {
-        await axios.post("http://localhost:5000/events", ev);
+        await axios.post(`${Host}/events`, ev);
       }
     }
 
@@ -117,7 +118,7 @@ function CalendarPage() {
   // ✅ Delete event
   const handleDeleteEvent = async () => {
     if (!editingEvent) return;
-    await axios.delete(`http://localhost:5000/events/${editingEvent.id}`);
+    await axios.delete(`${Host}/events/${editingEvent.id}`);
     fetchEvents();
     setShowModal(false);
     setEditingEvent(null);

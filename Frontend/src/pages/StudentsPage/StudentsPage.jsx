@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { FaPlus, FaEllipsisH } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 import "./StudentsPage.css";
+import { Host } from "../../DEV";
 
 function StudentsPage() {
   const navigate = useNavigate();
@@ -21,7 +22,7 @@ function StudentsPage() {
 
   // Fetch all students
   useEffect(() => {
-    fetch("http://localhost:5000/students")
+    fetch(`${Host}/students`)
       .then((res) => res.json())
       .then(setStudents)
       .catch((err) => console.error("❌ Error fetching students:", err));
@@ -35,7 +36,7 @@ function StudentsPage() {
     }
 
     try {
-      const res = await fetch("http://localhost:5000/students", {
+      const res = await fetch(`${Host}/students`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({

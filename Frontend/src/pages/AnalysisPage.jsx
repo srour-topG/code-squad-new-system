@@ -11,7 +11,7 @@ import {
   ResponsiveContainer,
   CartesianGrid,
 } from "recharts";
-
+import { Host } from "../DEV";
 // ... keep your imports
 
 function AnalysisPage() {
@@ -40,8 +40,8 @@ function AnalysisPage() {
     const fetchData = async () => {
       try {
         const [studentsRes, pricesRes] = await Promise.all([
-          axios.get("http://localhost:5000/students"),
-          axios.get("http://localhost:5000/prices"),
+          axios.get(`${Host}/students`),
+          axios.get(`${Host}/prices`),
         ]);
 
         const updatedStudents = (studentsRes.data || []).map((s) => {
@@ -80,7 +80,7 @@ function AnalysisPage() {
     setStudents(updatedStudents);
 
     try {
-      await axios.put(`http://localhost:5000/students/${student.id}`, {
+      await axios.put(`${Host}/students/${student.id}`, {
         ...student,
         paidMonths: last12Months.map((m) =>
           m === month ? newState : student.payments[m]
@@ -94,7 +94,7 @@ function AnalysisPage() {
   // 🔹 Save prices
   const savePrices = async () => {
     try {
-      await axios.put("http://localhost:5000/prices", prices);
+      await axios.put(`${Host}/prices`, prices);
       alert("✅ Prices updated!");
     } catch (err) {
       console.error("❌ Error saving prices:", err);
