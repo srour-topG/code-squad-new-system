@@ -1,0 +1,12 @@
+.fixed-width {
+  width: 300px;
+}
+
+.fixed-height {
+  height: 250px;
+}
+
+html,
+body {
+  overflow-x: hidden;
+}

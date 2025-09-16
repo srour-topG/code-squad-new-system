@@ -1,0 +1,200 @@
+/* Orange Palette */
+.bg-light-orange {
+  background: #fff7f0;
+}
+
+.text-orange {
+  background: linear-gradient(90deg, #ff6600, #ffaa00);
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.btn-orange {
+  background: linear-gradient(90deg, #ff6600, #ffaa00);
+  color: white;
+  font-weight: bold;
+  border: none;
+  border-radius: 10px;
+  padding: 0.5rem 1rem;
+  transition: transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+.btn-orange:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 15px rgba(255, 102, 0, 0.5);
+}
+
+.btn-outline-danger {
+  border: 2px solid #f01515;
+  color: #f01515;
+  border-radius: 8px;
+  background: white;
+  transition: all 0.3s ease;
+}
+
+.btn-outline-danger:hover {
+  background: #f01515;
+  color: white;
+  box-shadow: 0 0 10px rgba(255, 140, 0, 0.8);
+}
+
+.btn-outline-orange {
+  border: 2px solid #ff8800;
+  color: #ff8800;
+  border-radius: 8px;
+  background: white;
+  transition: all 0.3s ease;
+}
+
+.btn-outline-orange:hover {
+  background: #ff8800;
+  color: white;
+  box-shadow: 0 0 10px rgba(255, 140, 0, 0.8);
+}
+
+/* Inputs */
+.stylish-input {
+  border-radius: 12px;
+  border: 2px solid #ff8800;
+  padding: 0.6rem 1rem;
+  box-shadow: 0 2px 6px rgba(255, 136, 0, 0.2);
+}
+
+.stylish-input:focus {
+  border-color: #ffaa00;
+  box-shadow: 0 0 8px rgba(255, 140, 0, 0.6);
+}
+
+/* Student Card */
+.student-card {
+  position: relative;
+  background: white;
+  border-radius: 12px;
+  padding: 1rem 1.5rem;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 2px 6px rgba(255, 102, 0, 0.15);
+}
+
+/* Gradient border via pseudo-element */
+.student-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 12px;
+  padding: 3px;
+  background: linear-gradient(90deg, #ff6600, #ffaa00, #ff6600);
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
+.student-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 18px rgba(255, 102, 0, 0.35);
+}
+
+.session-grid {
+  display: grid;
+  grid-template-columns: repeat(8, 1fr); /* 8 sessions */
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.session-box {
+  padding: 12px;
+  border-radius: 8px;
+  font-weight: bold;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.session-box.attended {
+  background: #28a745; /* green */
+  color: white;
+  border: 1px solid #1e7e34;
+}
+
+.session-box.missed {
+  background: #dc3545; /* red */
+  color: white;
+  border: 1px solid #a71d2a;
+}
+
+.session-box:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+.modal-content {
+  width: 400px;
+  max-width: 90%;
+  border-radius: 12px;
+}
+
+/* Months Grid */
+.months-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 8px;
+  margin-bottom: 1rem;
+}
+
+.month-box {
+  text-align: center;
+  padding: 8px 0;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+
+.month-box.paid {
+  background: #28a745; /* green */
+  color: white;
+}
+
+.month-box.unpaid {
+  background: #dc3545; /* red */
+  color: white;
+}
+
+/* Sessions Grid */
+.session-grid {
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  gap: 8px;
+}
+
+.session-box {
+  text-align: center;
+  padding: 12px 0;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+
+.session-box.attended {
+  background: #28a745; /* green */
+  color: white;
+}
+
+.session-box.missed {
+  background: #dc3545; /* red */
+  color: white;
+}
